@@ -16,9 +16,7 @@ export function Edit() {
       <Section>
       <CardPreview />
 
-      <form action="">
-        <Input />
-      </form>
+    
 
       </Section>
 

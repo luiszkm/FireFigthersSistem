@@ -34,11 +34,11 @@ export function Header() {
         {!admin ?
           <Link to="/favorites">
             <AiOutlineAlert />
-            Ocorrências
+            Minhas Ocorrências
           </Link> :
           <Link to="/administrator">
             <AiOutlineUser />
-            Administrador
+            Ocorrências
           </Link>}
 
         <Link to="/profile">

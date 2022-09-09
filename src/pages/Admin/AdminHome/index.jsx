@@ -14,7 +14,13 @@ export function Adm() {
   return (
     <Container>
       <Header />
-      <Table />
+      <Main>
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+      </Main>
       <Footer />
     </Container>
   )

@@ -1,62 +1,23 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
   >section{
 
     @media (min-width:850px) {
       padding: 4rem 12.4rem;
+        min-height: 100vh;
+
     }
   }
 `
-export const ImageProduct = styled.label`
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  margin-bottom: 1rem;
-  min-width:fit-content;
-
- >label{
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  border: 1px solid ${({ theme }) => theme.COLORS.WHITE};
-  border-radius: 5px;
-  padding: .7rem;
-  height: 4.8rem;
-
-  font-size: 1.4rem;
-
-  cursor: pointer;
- }
- >span{
-  font-style: normal;
-    font-weight: 400;
-    font-size: 1.6rem;
-    line-height: 1.6rem;  color:${({ theme }) => theme.COLORS.TEXT_COLOR};
-
- }
 
 
-`
-export const ImageFile = styled.div`
-  min-height: 20rem;
-  border-radius: 5px;
-
-  width: fit-content;
-  height: 100%;
-
-  max-width: 40rem;
-  max-height: 30rem;
-  border: 1px solid ${({ theme }) => theme.COLORS.WHITE_300};
-  >label img{
-    width: 100%;
-    max-height: 30rem;
-    object-fit: fill;
-    border-radius: 5px;
-  }
-
-
-`
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
@@ -112,25 +73,5 @@ export const Form = styled.form`
 }
 }
 
-
-`
-export const Select = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-
-  >div{
-    width: 100%;
-   border: 1px solid ${({ theme }) => theme.COLORS.WHITE};
-    border-radius: 5px;
-    color: ${({ theme }) => theme.COLORS.WHITE};
-  }
-
-  >select{
-    background-color: transparent ;
-    border: 1px solid ${({ theme }) => theme.COLORS.WHITE};
-    border-radius: 5px;
-    color: ${({ theme }) => theme.COLORS.WHITE};
-  }
 
 `

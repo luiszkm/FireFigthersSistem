@@ -6,7 +6,7 @@ export const Container = styled.div`
   align-items: center;
   position: relative;
   margin-top: 1rem;
-  width: 28rem;
+  max-width: 28rem;
   height: 40rem;
   padding: 4rem;
   background-color: rgba(0, 0, 0, 0.32);
@@ -14,12 +14,11 @@ export const Container = styled.div`
   border: 1px solid rgba(0, 0, 0, 0.65);
   border-radius: 8px;
 
-  >strong{
-  font-weight: 400;
-  font-size: 3.2rem;
-  line-height: 5.1rem;
-  text-align: center;
-  color: #82F3FF;
+  >img{
+    width: 20rem;
+    height: 20rem;
+    border-radius: 50%;
+    background: red;
   }
 
   >svg,
@@ -32,16 +31,3 @@ export const Container = styled.div`
 
 `
 
-export const Purchases = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 1.1rem;
-  >svg{
-      cursor: pointer;
-  }
-  >button{
-      width: 9.2rem;
-  }
-
-
-`

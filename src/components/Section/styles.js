@@ -5,14 +5,14 @@ export const Container = styled.section`
   flex-direction: column;
   align-items: center;
   width: 100%;
-  padding: 3rem;
+  padding: 1rem;
   gap: 3rem;
   >h2{
     color: ${({ theme})=> theme.COLORS.WHITE};
     margin: 0 auto;
     font-style: normal;
     font-weight: 500;
-    font-size: 2.2rem;
+    font-size: 2rem;
     line-height: 2.4rem;
   }
 

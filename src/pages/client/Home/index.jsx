@@ -6,6 +6,7 @@ import { Carousel } from "../../../components/Carousel"
 
 
 import { Container, Main } from "./styles"
+import { FormPage } from "../../../components/Form"
 
 
 export function Home() {
@@ -13,26 +14,8 @@ export function Home() {
   return (
     <Container>
       <Header />
-      <Main>
-        <h1>Sabores inigualáveis</h1>
-        <p>Sinta o cuidado do preparo com ingredientes selecionados</p>
-      </Main>
-      <Section title="Pratos Principais">
-        <Carousel content={< Card />} />
-        
-      </Section>
-
-      <Section title="Sobre Mesas">
-        <Carousel content={< Card />} />
-        
-      </Section>
-
-      <Section title="Bebidas">
-        <Carousel content={< Card />} />
-        
-      </Section>
-
-      <Footer />
+    <FormPage />
+      <Footer  />
     </Container>
   )
 }

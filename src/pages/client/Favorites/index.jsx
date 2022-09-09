@@ -5,6 +5,7 @@ import { Card } from "../../../components/Card";
 import { api } from "../../../services/api";
 import { Container, Gallery } from "./styles";
 import { useEffect } from "react";
+import { Table } from "../../../components/Table";
 
 
 export function Favorites() {
@@ -23,12 +24,7 @@ export function Favorites() {
     <Container>
       <Header />
       <Section>
-        <Gallery>
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-        </Gallery>
+        <Table />
       </Section>
       <Footer />
     </Container>

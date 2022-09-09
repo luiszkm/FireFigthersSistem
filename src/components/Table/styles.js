@@ -1,8 +1,6 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-max-width: 113rem;
-margin: 0 auto;
 width: 100%;
 overflow: auto;
 
@@ -13,11 +11,11 @@ export const TableContainer = styled.table`
  border-collapse: collapse;
   width: 100%;
   height: 100%;
-  max-width: 900px;
   font-family: 'Roboto';
   font-size: 1.4rem;
   line-height:2.2rem ;
   font-weight: 400;
+  
 
 
   >tbody tr td,

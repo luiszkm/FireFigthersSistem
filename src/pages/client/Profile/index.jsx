@@ -68,20 +68,14 @@ export function Profile() {
             />
           </label>
         </Avatar>
-        <nav>
-          <ul>
-            <Link to="/purchases"><li>Pedidos</li></Link>
-            <Link to="/address"><li>Endereço</li></Link>
-            <Link to="/payment"><li>Pagamentos</li></Link>
-          </ul>
-        </nav>
+  
         <Form>
           <Input placeholder="Nome"
-            value={name}
+            value={user.name}
             onChange={e => setName(e.target.value)}
           />
           <Input placeholder="Email"
-            value={email}
+            value={user.email}
             onChange={e => setEmail(e.target.value)}
           />
           <Input
