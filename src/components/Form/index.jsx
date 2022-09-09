@@ -1,20 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import { DivRow } from '../DivRow';
+import { Input } from '../Input';
+import { Textarea } from '../TextArea';
 
-import { Form, InputStyle, Button, Container } from "./styles"
+import { Form, Container, DivRow, Div, Grid } from "./styles"
 let teste = []
 
 export function FormPage() {
   const [local, setLocal] = useState([])
 
- 
-
 
   return (
     <Container>
-      <Header />
-      <Form  id="chamados">
-
+      <Form id="chamados">
         <select >
           <option value="Lojista ">Lojista </option>
           <option value=" Colaborador "> Colaborador </option>
@@ -24,85 +21,66 @@ export function FormPage() {
 
         <strong>Dados da vitima</strong>
 
-        <InputStyle type="text" placeholder="Nome"  />
+        <Input type="text" placeholder="Nome" />
 
         <DivRow>
-          <InputStyle type="number" placeholder="Idade"/>
+          <Input type="number" placeholder="Idade" />
 
           <label htmlFor="">
             M
-            <InputStyle  type="radio" value="M" />
+            <Input type="radio" value="M" />
           </label>
 
           <label htmlFor="F">F
-            <InputStyle  type="radio" value=" F" />
+            <Input type="radio" value=" F" />
           </label>
         </DivRow>
 
-        <DivRow>
-          <InputStyle type="text" placeholder="Rg"  />
-          <InputStyle type="text" placeholder="Tel" />
-        </DivRow>
+        <Div>
+          <Input type="text" placeholder="Rg" />
+          <Input type="text" placeholder="Tel" />
+        </Div>
 
-        <DivRow>
-          <InputStyle type="text" placeholder="Rua"/>
-          <InputStyle type="text" placeholder="Numero" />
-        </DivRow>
+        <Div>
+          <Input type="text" placeholder="Rua" />
+          <Input type="text" placeholder="Numero" />
+        </Div>
 
-        <DivRow>
-          <InputStyle type="text" placeholder="Bairro" />
-          <InputStyle type="text" placeholder="Cidade"/>
-        </DivRow>
+        <Div>
+          <Input type="text" placeholder="Bairro" />
+          <Input type="text" placeholder="Cidade" />
+        </Div>
 
 
-        <InputStyle type="text" placeholder="Nome Acompanhante" />
-        <InputStyle type="number" placeholder="Tel Acompanhante" />
+        <Input type="text" placeholder="Nome Acompanhante" />
+        <Input type="number" placeholder="Tel Acompanhante" />
 
-        <Grid title="CONTROLE DE TEMPO ATENDIMENTO">
-          <Div title="Transmissão" id="transmission">
-            <InputStyle id="transmission"
-              type="datetime-local" placeholder="Transmissão"
-            />
-          </Div>
-
-          <Div title="Chegada" id="arrival">
-            <InputStyle
-              type="datetime-local"
-              placeholder="Chegada " />
-          </Div>
-
-          <Div title="Saida" id="exit">
-            <InputStyle id='exit'
-              type="datetime-local"
-              placeholder="Saida" />
-          </Div>
-
-          <Div title="Liberação" id="release" >
-            <InputStyle id='release'
-              type="datetime-local" placeholder="Liberação"
-             />
-          </Div>
+        <Grid >
+          <Input id="transmission"
+            type="datetime-local" placeholder="Transmissão" />
+          <Input type="datetime-local"
+            placeholder="Chegada " />
+          <Input id='exit'
+            type="datetime-local"
+            placeholder="Saida" />
+          <Input id='release'
+            type="datetime-local" placeholder="Liberação" />
         </Grid>
 
-        <DivRow>
-          <InputStyle type="text" placeholder="1°PA" />
-          <InputStyle type="time" placeholder="hora" />
-          <InputStyle type="text" placeholder="2°PA"/>
-          <InputStyle type="time" placeholder="hora-2"/>
+        <Grid>
+          <Input type="text" placeholder="1°PA" />
+          <Input type="time" placeholder="hora" />
+          <Input type="text" placeholder="2°PA" />
+          <Input type="time" placeholder="hora-2" />
+        </Grid>
 
-        </DivRow>
+        <Grid>
+          <Input type="text" placeholder="Temperatura" />
+          <Input type="text" placeholder="Pulso" />
+          <Input type="text" placeholder="SPO²%" />
+        </Grid>
 
-        <DivRow>
-          <InputStyle type="text" placeholder="Temperatura"  />
-          <InputStyle type="text" placeholder="Pulso" />
-          <InputStyle type="text" placeholder="SPO²%"  />
-
-        </DivRow>
-
-        <textarea />
-
-
-        <Button type="submit" />
+        <Textarea />
       </Form>
 
     </Container>

@@ -38,19 +38,11 @@ export const Container = styled.div`
   color:${({ theme }) => theme.COLORS.WHITE};
   :focus{
     outline: none;
-
-  }
-
+    } 
     >option{
       outline: none;
     background-color: ${({ theme }) => theme.COLORS.SECONDARY_BG };
       color:${({ theme }) => theme.COLORS.WHITE_300};
-
-
-
-
     }
   }
-  
-
 `
