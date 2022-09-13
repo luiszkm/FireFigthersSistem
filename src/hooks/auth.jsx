@@ -9,6 +9,7 @@ export const AuthContext = createContext({});
 
 function AuthProvider({ children }) {
   const [data, setData] = useState({})
+  const [userCalled, setUserCalled] = useState([])
 
   async function signIn({ email, password }) {
 
@@ -41,7 +42,11 @@ function AuthProvider({ children }) {
     user.admin = response.data.admin;
 
   }
+  async function fetchUserCalled(){
+    const {data} = await api.get("/users/called")
+    setUserCalled(data)
 
+  }
   async function updateProfile({user, avatarFile}){
     try{
       if(avatarFile){
@@ -91,7 +96,7 @@ function AuthProvider({ children }) {
       setData({
         token,
         user: JSON.parse(user),
-        admin: JSON.parse(user),
+        admin: JSON.parse(admin),
       });
     }
   }, [])
@@ -102,6 +107,8 @@ function AuthProvider({ children }) {
         signIn,
         signOut,
         updateProfile,
+        fetchUserCalled,
+        userCalled,
         user: data.user,
         admin: data.admin,
         

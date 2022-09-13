@@ -4,18 +4,18 @@ import { Section } from "../../../components/Section";
 import { Card } from "../../../components/Card";
 import { api } from "../../../services/api";
 import { Container, Gallery } from "./styles";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Table } from "../../../components/Table";
 
 
 export function Favorites() {
-
-
+  const [datas, setDatas] = useState([])
+  
+  
   useEffect(()=>{
     async function handleFavorites(){
-      const response = await api.get("/favorites");
-
-      console.log(response);
+      const response = await api.get("/users/called");
+      setDatas(response.data.called)
     }
     handleFavorites()
 
@@ -24,7 +24,7 @@ export function Favorites() {
     <Container>
       <Header />
       <Section>
-        <Table />
+        <Table data={datas} />
       </Section>
       <Footer />
     </Container>

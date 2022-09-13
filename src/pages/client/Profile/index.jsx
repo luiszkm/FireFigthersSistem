@@ -31,8 +31,6 @@ export function Profile() {
 
   async function handleUpdate() {
     const user = {
-      name,
-      email,
       password: passwordNew,
       old_password: passwordOld,
     }
@@ -72,18 +70,23 @@ export function Profile() {
         <Form>
           <Input placeholder="Nome"
             value={user.name}
+            readOnly 
             onChange={e => setName(e.target.value)}
           />
           <Input placeholder="Email"
             value={user.email}
+            readOnly 
+
             onChange={e => setEmail(e.target.value)}
           />
           <Input
             placeholder="Senha Atual"
+            type= "password"
             onChange={e => setPasswordOld(e.target.value)}
           />
 
           <Input placeholder="Nova Senha"
+          type= "password"
             onChange={e => setPasswordNew(e.target.value)}
           />
 

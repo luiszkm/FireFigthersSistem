@@ -8,6 +8,7 @@ export function CardPreview({ data }) {
 
 
 
+
   return (
     <Container>
       <h4>Responsável: bombeiro <strong>data:  01/01/2022</strong></h4>

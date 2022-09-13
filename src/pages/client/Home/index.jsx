@@ -7,10 +7,15 @@ import { Carousel } from "../../../components/Carousel"
 
 import { Container, Main } from "./styles"
 import { FormPage } from "../../../components/Form"
-
+import { useEffect } from "react"
+import {useAuth} from "../../../hooks/auth"
 
 export function Home() {
+  const { fetchUserCalled } = useAuth()
 
+  useEffect (() => {
+
+  })
   return (
     <Container>
       <Header />

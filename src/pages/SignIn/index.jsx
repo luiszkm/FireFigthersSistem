@@ -26,7 +26,7 @@ export function SignIn() {
 
   return (
     <Container>
-      <Logo title="Sistema de Cadastro" className="main-logo" />
+      <Logo title="Sistema de Ocorrências" className="main-logo" />
       <Section title=" Faça Login">
 
         <Form >
@@ -42,7 +42,6 @@ export function SignIn() {
           <Button title=" Entrar"
             onClick={handleSignIn} />
 
-          <Link to="/register">Criar Conta</Link>
         </Form>
       </Section>
 

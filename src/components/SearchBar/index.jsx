@@ -11,7 +11,7 @@ export function SearchBar() {
       </label>
       <input id="search"
         type="text"
-        placeholder="Busque opções de pratos" />
+        placeholder="pesquisar ocorrências" />
     </Container>
   )
 }

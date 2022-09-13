@@ -17,7 +17,7 @@ export function Card({ data }) {
         />
       </Link>
 
-      <img src="" alt="imagem do colaborador" />
+      <img src={data} alt="imagem do colaborador" />
       <h3>Nome do  Bombeiro</h3>
       <p>email@emial.com</p>
       <p>total chamados : 55</p>

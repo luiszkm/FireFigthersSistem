@@ -1,8 +1,19 @@
 import { Link } from "react-router-dom";
-import { Container, TableContainer } from "./styles";
 import { AiFillEye } from "react-icons/ai"
+import { useEffect, useState } from "react";
+import { useAuth } from "../../hooks/auth";
+import { api } from "../../services/api"
 
-export function Table() {
+import { Tr } from "../../components/Tr"
+
+
+import { Container, TableContainer } from "./styles";
+
+
+export function Table({ data = [] }) {
+  // const { data } = api.get("/users/called")
+
+  
 
   return (
     <Container>
@@ -10,6 +21,7 @@ export function Table() {
         <thead>
           <tr>
             <th></th>
+            <th>ID</th>
             <th>Tipo</th>
             <th>Nome</th>
             <th>Idade</th>
@@ -24,23 +36,12 @@ export function Table() {
 
         <tbody>
 
-          <tr>
-            <td>
-              <Link to="/edit">
-                <AiFillEye size={25} />
-              </Link>
-            </td>
-            <td>lojista</td>
-            <td>irineu galileu</td>
-            <td>25</td>
-            <td>M</td>
-            <td>2505505</td>
-            <td>31 336633698</td>
-            <td>Creid</td>
-            <td>31 989595995</td>
-            <td>20/05 às 18h00</td>
-          </tr>
+          {data.map(data => (
+            <Tr data={data} />
+          ))}
 
+
+         
 
         </tbody>
       </TableContainer>

@@ -1,14 +1,14 @@
 import { Container } from "./styles";
 
-export function Input({ name, value,placeholder, outer ,...rest }) {
+export function Input({ name,id, value,placeholder, outer ,...rest }) {
 
   return (
     <Container>
-      <label htmlFor={name}>{name}</label>
+      <label htmlFor={id}>{name}</label>
       <input {...rest }
       value={value}
         placeholder={placeholder}
-        id={name}  />  {outer}
+        id={id}  />  {outer}
 
     </Container>
   )

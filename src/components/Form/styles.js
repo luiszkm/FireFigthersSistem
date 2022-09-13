@@ -22,21 +22,27 @@ export const Form = styled.form`
   }
 `
 export const Div = styled.div`
-  display: flex;
-  align-items: flex-start;
-  flex-direction: column;
+  display: grid;
+  gap:1rem;
+  grid-template-columns: repeat(1, 1fr);
   width: 100%;
+  @media (min-width:900px) {
+    grid-template-columns: repeat(2, 1fr);
+
+  }
  
 
 
 `
 export const DivRow = styled.div`
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 2rem;
- 
+     display: grid;
+  gap:1rem;
+  grid-template-columns: repeat(1, 1fr);
+  width: 100%;
+  @media (min-width:900px) {
+    grid-template-columns: repeat(3, 1fr);
+
+  }
 `
 export const Grid = styled.div`
   width: 100%;
