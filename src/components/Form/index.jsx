@@ -11,7 +11,7 @@ export function FormPage() {
   const [victimName, setVictimName] = useState('');
   const [age, setAge] = useState('');
   const [phone, setPhone] = useState('');
-  const [sexo, setSexo] = useState('');
+  const [sexo, setSexo] = useState('M');
   const [rg, setRg] = useState('');
   const [escortName, setEscortName] = useState('');
   const [escortPhone, setEscortPhone] = useState('');
@@ -131,9 +131,13 @@ console.log(type);
 
         <DivRow>
 
-          <Input type= "text"  placeholder="Tipo"
-          onChange={e => setType(e.target.value)} />
-           
+          <select onChange={e => setType(e.target.value)} >
+            <option value=""></option>
+            <option value="lojista">Lojista </option>
+            <option value="colaborador"> Colaborador </option>
+            <option value="cliente"> Cliente</option>
+            <option value="terceirizado"> Terceirizado</option>
+          </select>
 
           <Input type="number" placeholder="Idade"
             onChange={e => setAge(e.target.value)} />
