@@ -7,7 +7,7 @@ import { Form, Container, DivRow, Div, Grid } from "./styles"
 
 export function FormPage() {
   //victim Datas
-  const [type, setType] = useState('lojista');
+  const [type, setType] = useState('');
   const [victimName, setVictimName] = useState('');
   const [age, setAge] = useState('');
   const [phone, setPhone] = useState('');
@@ -39,21 +39,23 @@ export function FormPage() {
   const [clinical, setClinical] = useState(["bobqqqqqq", "c22323u"]);
   const [wound, setWound] = useState([{ name: "aaa", local: "aruz" }]);
   const [procedures, setProcedures] = useState(["guy"]);
-  const [usedMaterial, setUsedMaterial] = useState([{ name: "vaca", amount: "bbbb" }]);
+  const [used_material, setUsed_material] = useState([{ name: "vaca", amount: "bbbb" }]);
 
 
 
+  const form = new FormData
 
   async function handleNewCalled(e) {
     e.preventDefault()
-
+    if (!victimName || !type || !rg || !phone || type === "") {
+      return alert("todos os dados da vitima são obrigatórios")
+    }
     try {
 
 
-      const form = new FormData
-
       form.append("type", type)
-      form.append("victimName", victimName)
+      form.append("victim_name", victimName)
+      form.append("age", age)
       form.append("phone", phone)
       form.append("rg", rg)
       form.append("sexo", sexo)
@@ -71,58 +73,38 @@ export function FormPage() {
       form.append("temperature", temperature)
       form.append("pulse", pulse)
       form.append("spo2", spo2)
-      form.append("victimDestiny", victimDestiny)
+      form.append("victim_destiny", victimDestiny)
       form.append("descriptions", descriptions)
 
 
-
-
-      await api.post('/called',
-        {
-          "type": type,
-          "victimName": victimName,
-          "age": age,
-          "phone": phone,
-          "rg": rg,
-          "sexo": sexo,
-          "escortName": escortName,
-          "escortPhone": escortPhone,
-          "medicines": medicines,
-          "traumas": traumas,
-          "clinical": clinical,
-          "wound": wound,
-          "street": street,
-          "number": number,
-          "district": district,
-          "city": city,
-          "pa1": pa1,
-          "timePa1": timePa1,
-          "pa2": pa2,
-          "timePa2": timePa2,
-          "temperature": temperature,
-          "pulse": pulse,
-          "spo2": spo2,
-          "procedures": procedures,
-          "usedMaterial": usedMaterial,
-          "victimDestiny": victimDestiny,
-          "descriptions": descriptions
-
-        }
-      )
+      await api.post('/called', { 
+        type, victim_name:victimName, age, sexo, phone,
+        rg, escortPhone, escortName,
+        pa1, timePa1, pa2, timePa2,
+        temperature, pulse, spo2,
+        victim_destiny:victimDestiny, descriptions,
+        street, medicines,
+        number,
+        district,
+        city,
+        traumas,
+        clinical,
+        wound,
+        procedures, used_material,
+       })
 
       alert("Nota criada coim sucesso")
 
-    } catch (error) {
+    }catch(error){
       console.error(error);
       alert("Não foi possível cadastrar seu chamado")
     }
-  }
+}
 
 
-console.log(type);
   return (
     <Container>
-      <Form id="chamados">
+      <Form id="chamados" onChange={e => setType(e.target.value)}>
 
         <strong>Dados da vitima</strong>
 
@@ -131,9 +113,13 @@ console.log(type);
 
         <DivRow>
 
-          <Input type= "text"  placeholder="Tipo"
-          onChange={e => setType(e.target.value)} />
-           
+          <select onChange={e => setType(e.target.value)} >
+            <option value=""></option>
+            <option value="Lojista ">Lojista </option>
+            <option value=" Colaborador "> Colaborador </option>
+            <option value=" Cliente"> Cliente</option>
+            <option value=" Terceirizado"> Terceirizado</option>
+          </select>
 
           <Input type="number" placeholder="Idade"
             onChange={e => setAge(e.target.value)} />
@@ -146,7 +132,7 @@ console.log(type);
             </label>
 
             <label htmlFor="F">F
-              <input type="radio" value="F" name="sexo"
+              <input type="radio" value=" F" name="sexo"
                 onChange={e => setSexo(e.target.value)} />
             </label>
           </div>
