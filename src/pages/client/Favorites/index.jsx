@@ -6,6 +6,7 @@ import { api } from "../../../services/api";
 import { Container, Gallery } from "./styles";
 import { useEffect, useState } from "react";
 import { Table } from "../../../components/Table";
+import { SearchBar } from "../../../components/SearchBar";
 
 
 export function Favorites() {
@@ -24,6 +25,7 @@ export function Favorites() {
     <Container>
       <Header />
       <Section>
+        <SearchBar />
         <Table data={datas} />
       </Section>
       <Footer />

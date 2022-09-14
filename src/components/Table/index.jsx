@@ -25,8 +25,8 @@ export function Table({ data = [] }) {
             <th>Tipo</th>
             <th>Nome</th>
             <th>Idade</th>
-            <th>Sexo</th>
             <th>RG</th>
+            <th>Sexo</th>
             <th>Telefone</th>
             <th>Acompanhante</th>
             <th>Tel. Acompanhante</th>

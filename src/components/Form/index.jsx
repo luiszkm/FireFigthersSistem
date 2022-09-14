@@ -43,19 +43,19 @@ export function FormPage() {
 
 
 
+  const form = new FormData
 
   async function handleNewCalled(e) {
     e.preventDefault()
-    if (!victim_name || !type || !rg || !phone || type === "") {
+    if (!victimName || !type || !rg || !phone || type === "") {
       return alert("todos os dados da vitima são obrigatórios")
     }
     try {
 
 
-      const form = new FormData
-
       form.append("type", type)
       form.append("victim_name", victimName)
+      form.append("age", age)
       form.append("phone", phone)
       form.append("rg", rg)
       form.append("sexo", sexo)
@@ -75,6 +75,8 @@ export function FormPage() {
       form.append("spo2", spo2)
       form.append("victim_destiny", victimDestiny)
       form.append("descriptions", descriptions)
+
+      console.log(form.get('type'));
 
       await api.post('/called', { form, clinical, traumas, wound, procedures, used_material })
 

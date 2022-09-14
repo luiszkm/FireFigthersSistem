@@ -29,7 +29,7 @@ export function Header() {
         icon={<FiHexagon className="icon2" size={25} />}
         title="SC"
       />
-      <SearchBar />
+     
       <Nav>
         {!admin ?
           <Link to="/favorites">
