@@ -4,8 +4,12 @@ import { Textarea } from '../TextArea';
 import { Button } from "../Button"
 import { api } from "../../services/api"
 import { Form, Container, DivRow, Div, Grid } from "./styles"
+import { useAuth } from '../../hooks/auth';
 
 export function FormPage() {
+  const { user} = useAuth()
+  const [userName, setUserName] = useState(user.name);
+
   //victim Datas
   const [type, setType] = useState('lojista');
   const [victimName, setVictimName] = useState('');
@@ -42,71 +46,29 @@ export function FormPage() {
   const [usedMaterial, setUsedMaterial] = useState([{ name: "vaca", amount: "bbbb" }]);
 
 
-
+  let today = new Date();
+  const now = today.toLocaleString();
 
   async function handleNewCalled(e) {
     e.preventDefault()
 
     try {
-
-
-      const form = new FormData
-
-      form.append("type", type)
-      form.append("victimName", victimName)
-      form.append("phone", phone)
-      form.append("rg", rg)
-      form.append("sexo", sexo)
-      form.append("escortName", escortName)
-      form.append("escortPhone", escortPhone)
-      form.append("medicines", medicines)
-      form.append("street", street)
-      form.append("number", number)
-      form.append("district", district)
-      form.append("city", city)
-      form.append("pa1", pa1)
-      form.append("timePa1", timePa1)
-      form.append("pa2", pa2)
-      form.append("timePa2", timePa2)
-      form.append("temperature", temperature)
-      form.append("pulse", pulse)
-      form.append("spo2", spo2)
-      form.append("victimDestiny", victimDestiny)
-      form.append("descriptions", descriptions)
-
-
-
-
       await api.post('/called',
-        {
-          "type": type,
-          "victimName": victimName,
-          "age": age,
-          "phone": phone,
-          "rg": rg,
-          "sexo": sexo,
-          "escortName": escortName,
-          "escortPhone": escortPhone,
-          "medicines": medicines,
-          "traumas": traumas,
-          "clinical": clinical,
-          "wound": wound,
-          "street": street,
-          "number": number,
-          "district": district,
-          "city": city,
-          "pa1": pa1,
-          "timePa1": timePa1,
-          "pa2": pa2,
-          "timePa2": timePa2,
-          "temperature": temperature,
-          "pulse": pulse,
-          "spo2": spo2,
-          "procedures": procedures,
-          "usedMaterial": usedMaterial,
-          "victimDestiny": victimDestiny,
-          "descriptions": descriptions
-
+        { 
+          userName,
+          type, victimName, age, sexo, phone,
+          rg, escortPhone, escortName,
+          pa1, timePa1, pa2, timePa2,
+          temperature, pulse, spo2,
+          victimDestiny, descriptions,
+          street, medicines,
+          number,
+          district,
+          city,
+          traumas,
+          clinical,
+          wound,
+          procedures, usedMaterial,
         }
       )
 
@@ -118,8 +80,38 @@ export function FormPage() {
     }
   }
 
+  let taa = {
+    "type": type,
+    "victimName": victimName,
+    "age": age,
+    "phone": phone,
+    "rg": rg,
+    "sexo": sexo,
+    "escortName": escortName,
+    "escortPhone": escortPhone,
+    "medicines": medicines,
+    "traumas": traumas,
+    "clinical": clinical,
+    "wound": wound,
+    "street": street,
+    "number": number,
+    "district": district,
+    "city": city,
+    "pa1": pa1,
+    "timePa1": timePa1,
+    "pa2": pa2,
+    "timePa2": timePa2,
+    "temperature": temperature,
+    "pulse": pulse,
+    "spo2": spo2,
+    "procedures": procedures,
+    "usedMaterial": usedMaterial,
+    "victimDestiny": victimDestiny,
+    "descriptions": descriptions
 
-console.log(type);
+  }
+
+  console.log(type);
   return (
     <Container>
       <Form id="chamados">
@@ -187,8 +179,12 @@ console.log(type);
         <Div>
           <Input name="Medicamentos utilizados pela vitima"
             placeholder="Ex: DorFlex, 1 comprimido, 9:00"
-            onChange={e => setMedicines(e.target.value)} />
-          <Input name="Destino da vitima" placeholder="Ex: hospital" />
+            onChange={e => setMedicines(e.target.value)}
+          />
+          <Input name="Destino da vitima"
+            placeholder="Ex: hospital"
+            onChange={e => setVictimDestiny(e.target.value)}
+          />
         </Div>
 
         <Grid >

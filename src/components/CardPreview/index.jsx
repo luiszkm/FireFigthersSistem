@@ -4,39 +4,39 @@ import { Button } from "../Button";
 import { Section } from "../Section";
 
 
-export function CardPreview({ data }) {
+export function CardPreview({ data ={} , address}) {
 
 
 
 
   return (
     <Container>
-      <h4>Responsável: bombeiro <strong>data:  01/01/2022</strong></h4>
+      <h4>Responsável: {data.user_name}  <strong>data: {data.created_at}</strong></h4>
 
       <div>
         <Section title="Dados da Vitima">
           <Div>
-            <span>Lojista</span>
+            <span>{data.type}</span>
             <DivRow>
-              <span>Nome : irineu Pereira </span>
-              <span>30 anos</span>
+              <span>Nome: {data.victim_name} </span>
+              <span>{data.age} anos</span>
             </DivRow>
 
-            <span>Rg: MG 3232323232</span>
+            <span>Rg:{data.rg}</span>
             <DivRow>
-              <span>Sexo: M </span>
-              <span>Tel: 323223232</span>
+              <span>Sexo: {data.sexo} </span>
+              <span>Tel: {data.phone}</span>
             </DivRow>
             <DivRow>
-              <span>Rua: suvaco da cobra </span>
+              <span>Rua:{address.street} </span>
               <span>N° 555</span>
             </DivRow>
             <DivRow>
               <span>Bairro: broklyn</span>
               <span>BH</span>
             </DivRow>
-            <span>Acompanhante: creid oliveira</span>
-            <span>Tel:31 3223233</span>
+            <span>Acompanhante: {data.escortName}</span>
+            <span>Tel: {data.escortPhone}</span>
           </Div>
 
         </Section>
@@ -47,7 +47,7 @@ export function CardPreview({ data }) {
               <span>liberação: 15:30</span>
             </DivRow>
 
-            <span>Medicamentos usado pela vitima: dorflex, 14:00</span>
+            <span>Medicamentos usado pela vitima: {data.medicines}</span>
             <DivRow>
               <h5>Traumas:</h5>
               <span>atropelamento</span>

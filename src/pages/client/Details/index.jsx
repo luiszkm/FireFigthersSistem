@@ -8,6 +8,7 @@ import {api} from "../../../services/api"
 
 export function Details() {
   const [data, setData] = useState({})
+  const [dataAddress, setDataAddress] = useState({})
   const params = useParams()
   const navigate = useNavigate()
 
@@ -17,12 +18,18 @@ export function Details() {
       setData(response.data)
     }
     fetchNote()
+    async function fetchAddress(){
+      const response = await api.get(`/addrees/${params.id}`)
+      setDataAddress(response.data)
+    }
+
   }, [])
+  console.log(data);
 
   return (
     <Container>
       <Header />
-      <CardPreview data={data} />
+      <CardPreview data={data} address={dataAddress}  />
       <Footer />
     </Container>
   )

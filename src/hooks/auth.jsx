@@ -10,7 +10,7 @@ export const AuthContext = createContext({});
 function AuthProvider({ children }) {
   const [data, setData] = useState({})
   const [userCalled, setUserCalled] = useState([])
-
+  
   async function signIn({ email, password }) {
 
     try {
