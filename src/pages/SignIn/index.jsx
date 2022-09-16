@@ -27,7 +27,7 @@ export function SignIn() {
   return (
     <Container>
       <Logo title="Sistema de Ocorrências" className="main-logo" />
-      <Section title=" Faça Login">
+      <Section title=" Faça Login" back={false}>
 
         <Form >
           <Input name="E-mail"

@@ -2,14 +2,17 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react"
 import { useEffect } from "react";
 
-import { api } from "../../services/api";
+import { api } from "../../../services/api";
 
-import { Input } from "../../components/Input";
-import { Logo } from "../../components/Logo";
-import { Section } from "../../components/Section";
-import { Button } from "../../components/Button";
+import { Input } from "../../../components/Input";
+import { Section } from "../../../components/Section";
+import { Button } from "../../../components/Button";
+
+import {GiWolfHead} from "react-icons/gi"
 
 import { Container, Form } from "./styles";
+import { Header } from "../../../components/Header";
+import { Footer } from "../../../components/Footer";
 
 export function SignUp() {
   const [name, setName] = useState("")
@@ -18,7 +21,8 @@ export function SignUp() {
 
   const navigate = useNavigate()
 
-  function handleSignIn() {
+  function handleSignUp(e) {
+    e.preventDefault()
     if (!name || !email || !password) {
       alert("Preencha todos os campos!");
       return;
@@ -43,9 +47,11 @@ export function SignUp() {
 
   return (
     <Container>
-      <Logo title="Food Explorer" />
-      <Section title=" Faça Login">
+      <Header/>
+      <Section title="Cadastre um Novo colaborador">
         <Form >
+        <GiWolfHead size={55} />
+
           <Input name="nome"
             placeholder=" seu nome"
             onChange={event => setName(event.target.value)} />
@@ -60,10 +66,11 @@ export function SignUp() {
             onChange={event => setPassword(event.target.value)} />
 
           <Button title="Registrar"
-            onClick={handleSignIn} />
-          <Link to="/">Já tenho uma conta</Link>
+            onClick={(e)=>handleSignUp(e)} />
+         
         </Form>
       </Section>
+      <Footer/>
     </Container>
   )
 }

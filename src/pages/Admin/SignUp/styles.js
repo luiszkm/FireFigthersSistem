@@ -11,13 +11,13 @@ export const Container = styled.div`
     padding:  6.4rem 2rem;
     max-width: 48rem;
     height: 65rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    min-height: 80vh;
+    
     
   }
-  @media (min-width:900px) {
-    flex-direction: row;
-    justify-content: space-around;    
-    padding:5vw;
-  }
+ 
 `
 export const Form = styled.form`
   display: flex;

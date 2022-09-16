@@ -10,17 +10,34 @@ import { Container, Main } from "./styles"
 import { Table } from "../../../components/Table"
 import { api } from "../../../services/api"
 import { useAuth } from "../../../hooks/auth"
+import { useEffect } from "react"
+import { useState } from "react"
 
 export function Adm() {
   const { user } = useAuth();
-
+  const [data , setData] = useState([])
   const avatarUrl = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceholder;
 
+
+  useEffect(()=>{
+    async function fetchUsers(){
+      const response = await api.get("/adm")
+
+      setData(response.data.users)
+
+    }fetchUsers()
+  },[])
   return (
     <Container>
       <Header />
       <Main>
-        <Card data={avatarUrl} />
+        {
+          data.map(data=>(
+            <Card data={data} />
+
+          ))
+        }
+
        
       </Main>
       <Footer />

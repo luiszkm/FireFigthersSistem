@@ -16,12 +16,8 @@ export function Details() {
     async function fetchNote() {
       const response = await api.get(`/called/${params.id}`)
       setData(response.data)
-    }
-    fetchNote()
-    async function fetchAddress(){
-      const response = await api.get(`/addrees/${params.id}`)
-      setDataAddress(response.data)
-    }
+    }fetchNote()
+   
 
   }, [])
   console.log(data);
@@ -29,7 +25,7 @@ export function Details() {
   return (
     <Container>
       <Header />
-      <CardPreview data={data} address={dataAddress}  />
+      <CardPreview data={data}  />
       <Footer />
     </Container>
   )

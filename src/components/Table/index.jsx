@@ -30,14 +30,16 @@ export function Table({ data = [] }) {
             <th>Telefone</th>
             <th>Acompanhante</th>
             <th>Tel. Acompanhante</th>
-            <th>data</th>
+            <th>Data</th>
+            <th>Responsável</th>
           </tr>
         </thead>
 
         <tbody>
 
           {data.map(data => (
-            <Tr data={data} />
+            <Tr data={data}
+            key={String(data.id)} />
           ))}
 
 

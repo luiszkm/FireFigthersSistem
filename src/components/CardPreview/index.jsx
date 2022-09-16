@@ -4,7 +4,7 @@ import { Button } from "../Button";
 import { Section } from "../Section";
 
 
-export function CardPreview({ data ={} , address}) {
+export function CardPreview({ data = {} }) {
 
 
 
@@ -16,27 +16,33 @@ export function CardPreview({ data ={} , address}) {
       <div>
         <Section title="Dados da Vitima">
           <Div>
-            <span>{data.type}</span>
+            <span> <strong>tipo: </strong>
+              {data.type}
+            </span>
             <DivRow>
-              <span>Nome: {data.victim_name} </span>
-              <span>{data.age} anos</span>
+              <span><strong>Nome: </strong>
+                {data.victim_name}
+              </span>
+              <span> <strong>Idade: </strong>
+                {data.age} anos</span>
             </DivRow>
 
-            <span>Rg:{data.rg}</span>
+            <span><strong>Rg: </strong>
+              {data.rg}</span>
             <DivRow>
-              <span>Sexo: {data.sexo} </span>
-              <span>Tel: {data.phone}</span>
+              <span><strong>Sexo: </strong> {data.sexo} </span>
+              <span><strong>Tel:</strong> {data.phone}</span>
             </DivRow>
             <DivRow>
-              <span>Rua:{address.street} </span>
-              <span>N° 555</span>
+              <span><strong>Rua: </strong>{data.street} </span>
+              <span><strong>N°: </strong>{data.number}</span>
             </DivRow>
             <DivRow>
-              <span>Bairro: broklyn</span>
-              <span>BH</span>
+              <span><strong>Bairro: </strong> {data.district}</span>
+              <span><strong>Cidade: </strong> {data.city}</span>
             </DivRow>
-            <span>Acompanhante: {data.escortName}</span>
-            <span>Tel: {data.escortPhone}</span>
+            <span><strong>Acompanhante: </strong> {data.escortName}</span>
+            <span><strong>Tel. acompanhante: </strong> {data.escortPhone}</span>
           </Div>
 
         </Section>
@@ -49,55 +55,71 @@ export function CardPreview({ data ={} , address}) {
 
             <span>Medicamentos usado pela vitima: {data.medicines}</span>
             <DivRow>
-              <h5>Traumas:</h5>
+              <strong>Traumas:</strong>
               <span>atropelamento</span>
             </DivRow>
             <DivRow>
-              <h5>Clínico:</h5>
+
+              <strong>Clínico:</strong>
               <span>Convulsão</span>
             </DivRow>
             <DivRow>
-              <h5>Lesões:</h5>
+              <strong>Lesões:</strong>
               <span>Queimadura- Face</span>
             </DivRow>
             <DivRow>
-              <span>1°PA:120/70</span>
-              <span>Hora: 15:23</span>
+              <strong>1°PA:
+                <span>{data.pa1}</span>
+              </strong>
+              <strong>Hora:
+                <span>{data.timePa1}</span>
+              </strong>
             </DivRow>
             <DivRow>
-              <span>2°PA:-/-</span>
-              <span>Hora:-</span>
+              <strong>2°PA: 
+                <span>{data.pa1 || ' -/-'}</span>
+              </strong>
+              <strong>Hora:  
+                <span>{data.timePa2 || " -/-"}</span>
+              </strong>
             </DivRow>
-          
+
           </Div>
         </Section>
 
         <Section title="Procedimentos">
           <Div>
-          <span>Temperatura:37°C</span>
+            <strong>Temperatura:
+              <span>{data.temperature}</span>
+            </strong>
 
             <DivRow>
-              <span>Pulso:72bmp</span>
-              <span>SPO²%:99%</span>
+              <strong>Pulso:
+                <span>{data.pulse}</span>
+              </strong>
+
+              <strong>SPO²%:
+                <span>{data.spo2}</span>
+              </strong>
             </DivRow>
 
             <DivRow>
-              <h5>Procedimentos:</h5>
+              <strong>Procedimentos:</strong>
               <span>Cadeira de Rodas</span>
             </DivRow>
             <DivRow>
-              <h5>Material Usado:</h5>
+              <strong>Material Usado:</strong>
               <span>Luva (5)</span>
             </DivRow>
             <DivRow>
-              <h5>Destino :</h5>
-              <span>Hospital</span>
+              <strong>Destino :</strong>
+              <span>{data.victim_destiny}</span>
             </DivRow>
             <Div>
-              <span>Procedimentos Detalhados:</span>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque veritatis tempora aliquam, dignissimos animi perferendis a consectetur praesentium iste libero repellendus deleniti, distinctio nesciunt eveniet maxime voluptate quo nemo blanditiis!
+              <strong>Procedimentos Detalhados:</strong>
+              <p>{data.descriptions}</p>
             </Div>
-            
+
           </Div>
         </Section>
       </div>

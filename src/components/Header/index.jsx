@@ -8,7 +8,7 @@ import { SearchBar } from "../SearchBar"
 import { api } from "../../services/api";
 
 import avatarPlaceholder from "../../assets/avatar_placeholder.svg";
-import { AiOutlineAlert,AiOutlineHeart, AiOutlineUser } from "react-icons/ai"
+import { AiOutlineAlert, AiOutlineUser , AiOutlineUsergroupAdd} from "react-icons/ai"
 import { ImExit } from "react-icons/im"
 import { FiHexagon } from "react-icons/fi"
 
@@ -29,8 +29,12 @@ export function Header() {
         icon={<FiHexagon className="icon2" size={25} />}
         title="SC"
       />
-     
+
       <Nav>
+        {admin ? <Link to="/register">
+          <AiOutlineUsergroupAdd />
+          Cadastrar Novo Colaborador
+        </Link> : ""}
         {!admin ?
           <Link to="/favorites">
             <AiOutlineAlert />
@@ -39,7 +43,8 @@ export function Header() {
           <Link to="/administrator">
             <AiOutlineUser />
             Ocorrências
-          </Link>}
+          </Link>
+        }
 
         <Link to="/profile">
           <img src={avatarUrl} />

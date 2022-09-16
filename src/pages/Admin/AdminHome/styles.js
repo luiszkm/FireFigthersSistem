@@ -18,6 +18,7 @@ justify-content: space-between;
 export const Main = styled.div`
   width: 100%;
   height: 100%;
+  padding: 2rem;
   display: grid;
   gap: 2rem;
   grid-template-columns: repeat(1, 1fr);

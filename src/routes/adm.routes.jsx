@@ -4,6 +4,7 @@ import{Adm} from "../pages/Admin/AdminHome";
 import {AdmMenu} from "../pages/Admin/AdmMenu";
 import{Edit} from "../pages/Admin/Edit"
 import{Profile} from "../pages/client/Profile"
+import{SignUp} from "../pages/Admin/SignUp"
 
 export function AdmRoutes(){
 
@@ -11,8 +12,10 @@ export function AdmRoutes(){
     <Routes>
       <Route path="/" element ={<Adm />}/>
       <Route path="/administrator" element ={<AdmMenu />}/>
-      <Route path="/details" element ={<Edit />}/>
+      <Route path="/edit/:id" element ={<Edit />}/>
       <Route path="/profile" element ={<Profile />}/>
+      <Route path="/register" element ={<SignUp />}/>
+
     </Routes>
   )
 }
