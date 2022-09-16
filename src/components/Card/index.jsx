@@ -3,7 +3,7 @@ import { AiOutlineHeart, AiOutlinePlus, AiOutlineLine, AiFillHeart, AiOutlineEdi
 import { Button } from "../Button";
 import { useState } from "react";
 import { useAuth } from "../../hooks/auth";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { api } from "../../services/api";
 
 
@@ -12,15 +12,21 @@ import  avatarPlaceholder from "../../assets/avatar_placeholder.svg";
 export function Card({ data ={} }) {
 const avatarUrl = data.avatar ? `${api.defaults.baseURL}/files/${data.avatar}` : avatarPlaceholder
 
+const navigate = useNavigate()
 
+
+  function handleCollaboratorProfile(id){
+    navigate(`collaboratorProfile/${id}`)
+
+  }
 
   return (
     <Container>
-      <Link to="/collaboratorProfile">
+  
         <AiOutlineEdit
           size={25}
+          onClick={()=>handleCollaboratorProfile(data.id)}
         />
-      </Link>
 
       <img src={avatarUrl } 
       alt="imagem do colaborador" />

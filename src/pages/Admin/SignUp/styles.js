@@ -4,7 +4,6 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1rem;
   min-height: 100vh;
   >section{
     background: ${({ theme }) => theme.COLORS.SECONDARY_BG};
