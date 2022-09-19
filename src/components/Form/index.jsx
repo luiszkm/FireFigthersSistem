@@ -4,7 +4,7 @@ import { Select } from '../Select';
 import { Textarea } from '../TextArea';
 import { Button } from "../Button"
 import { api } from "../../services/api"
-import { Form, Container, DivRow, Div, Grid } from "./styles"
+import { Form, Container, DivRow, Div, Grid, CalledItemContainer } from "./styles"
 import { useAuth } from '../../hooks/auth';
 import { CalledItem } from '../CalledItem';
 
@@ -41,15 +41,63 @@ export function FormPage() {
   const [victimDestiny, setVictimDestiny] = useState('');
   const [descriptions, setDescriptions] = useState('');
 
-  const [traumas, setTraumas] = useState(["ruma"]);
-  const [clinical, setClinical] = useState(["bobqqqqqq", "c22323u"]);
-  const [wound, setWound] = useState([{ name: "aaa", local: "aruz" }]);
-  const [procedures, setProcedures] = useState(["guy"]);
-  const [usedMaterial, setUsedMaterial] = useState([{ name: "vaca", amount: "bbbb" }]);
 
+  const [newTrauma, setNewTrauma] = useState('');
+  const [traumas, setTraumas] = useState([]);
 
-  let today = new Date();
-  const now = today.toLocaleString();
+  const [newClinical, setNewClinical] = useState('');
+  const [clinical, setClinical] = useState([]);
+
+  const [newWound, setNewWound] = useState('');
+  const [wounds, setWounds] = useState([]);
+
+  const [newProcedure, setNewProcedure] = useState('');
+  const [procedures, setProcedures] = useState([]);
+
+  const [newUsedMaterial, setNewUsedMaterial] = useState('');
+  const [usedMaterials, setUsedMaterials] = useState([]);
+
+  function handleAddTrauma() {
+    setTraumas(prevState => [...prevState, newTrauma])
+    setNewTrauma("")
+  }
+  function handleDeleteTrauma(itemDeleted) {
+    setTraumas(prevState => prevState.filter(trauma => trauma !== itemDeleted))
+  }
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  function handleAddClinical() {
+    setClinical(prevState => [...prevState, newClinical])
+    setNewClinical("")
+  }
+  function handleDeleteClinical(itemDeleted) {
+    setClinical(prevState => prevState.filter(clinical => clinical !== itemDeleted))
+
+  }
+  ///////////////////////////////////////////////////////////////////////////////////////
+  function handleAddWound() {
+    setWounds(prevState => [...prevState, newWound])
+    setNewWound("")
+  }
+  function handleDeleteWound(itemDeleted) {
+    setWounds(prevState => prevState.filter(wound => wound !== itemDeleted))
+  }
+  /////////////////////////////////////////////////////////////////////////////////////////
+  function handleAddProcedures() {
+    setProcedures(prevState => [...prevState, newProcedure])
+    setNewProcedure("")
+  }
+  function handleDeleteProcedures(itemDeleted) {
+    setProcedures(prevState => prevState.filter(procedures => procedures !== itemDeleted))
+  }
+  //////////////////////////////////////////////////////////////////////////////////////////  
+  function handleAddMaterial() {
+    setUsedMaterials(prevState => [...prevState, newUsedMaterial])
+    setNewUsedMaterial("")
+  }
+  function handleDeleteMaterial(itemDeleted) {
+    setUsedMaterials(prevState => prevState.filter(material => material !== itemDeleted))
+  }
+
 
   async function handleNewCalled(e) {
     e.preventDefault()
@@ -69,8 +117,8 @@ export function FormPage() {
           city,
           traumas,
           clinical,
-          wound,
-          procedures, usedMaterial,
+          wounds,
+          procedures, usedMaterials,
         }
       )
 
@@ -94,7 +142,7 @@ export function FormPage() {
     "medicines": medicines,
     "traumas": traumas,
     "clinical": clinical,
-    "wound": wound,
+    "wound": wounds,
     "street": street,
     "number": number,
     "district": district,
@@ -107,13 +155,12 @@ export function FormPage() {
     "pulse": pulse,
     "spo2": spo2,
     "procedures": procedures,
-    "usedMaterial": usedMaterial,
+    "usedMaterial": usedMaterials,
     "victimDestiny": victimDestiny,
     "descriptions": descriptions
 
   }
 
-  console.log(type);
   return (
     <Container>
       <Form id="chamados">
@@ -125,7 +172,7 @@ export function FormPage() {
 
         <DivRow>
 
-          <Select/>
+          <Select onChange={e => setType(e.target.value)} />
 
           <Input type="number" placeholder="Idade"
             onChange={e => setAge(e.target.value)} />
@@ -183,7 +230,132 @@ export function FormPage() {
           />
         </Div>
 
-        <CalledItem />
+        <CalledItemContainer>
+          <label htmlFor="">Ocorrência Traumas</label>
+
+          <div className='content'>
+
+            {
+              traumas.map((trauma, index) => (
+                <CalledItem
+                  key={String(index)}
+                  value={trauma}
+                  onClick={() => handleDeleteTrauma(trauma)} />
+              ))
+            }
+
+            <CalledItem
+              isNew
+              placeholder="Ex: Agressão física"
+              value={newTrauma}
+              onChange={e => setNewTrauma(e.target.value)}
+              onClick={handleAddTrauma} />
+
+          </div>
+
+        </CalledItemContainer>
+
+        <CalledItemContainer>
+          <label htmlFor="">Ocorrência Clínica</label>
+
+          <div className='content'>
+
+            {
+              clinical.map((clinical, index) => (
+                <CalledItem
+                  key={String(index)}
+                  value={clinical}
+                  onClick={() => handleDeleteClinical(clinical)} />
+              ))
+            }
+
+            <CalledItem
+              isNew
+              placeholder="Ex: Convulsão"
+              value={newClinical}
+              onChange={e => setNewClinical(e.target.value)}
+              onClick={handleAddClinical} />
+
+          </div>
+
+        </CalledItemContainer>
+
+        <CalledItemContainer>
+          <label htmlFor="">Principais Lesões</label>
+
+          <div className='content'>
+
+            {
+              wounds.map((wound, index) => (
+                <CalledItem
+                  key={String(index)}
+                  value={wound}
+                  onClick={() => handleDeleteWound(wound)} />
+              ))
+            }
+
+            <CalledItem
+              isNew
+              placeholder="Ex:Queimadura-face"
+              value={newWound}
+              onChange={e => setNewWound(e.target.value)}
+              onClick={handleAddWound} />
+
+          </div>
+
+        </CalledItemContainer>
+
+        <CalledItemContainer>
+          <label htmlFor="">Procedimentos Efetuados</label>
+
+          <div className='content'>
+
+            {
+              procedures.map((procedures, index) => (
+                <CalledItem
+                  key={String(index)}
+                  value={procedures}
+                  onClick={() => handleDeleteProcedures(procedures)} />
+              ))
+            }
+
+            <CalledItem
+              isNew
+              placeholder="Ex:Colar cervical"
+              value={newProcedure}
+              onChange={e => setNewProcedure(e.target.value)}
+              onClick={handleAddProcedures} />
+
+          </div>
+
+        </CalledItemContainer>
+
+        <CalledItemContainer>
+          <label htmlFor="">Materiais Utilizados</label>
+
+          <div className='content'>
+
+            {
+              usedMaterials.map((material, index) => (
+                <CalledItem
+                  key={String(index)}
+                  value={material}
+                  onClick={() => handleDeleteMaterial(material)} />
+              ))
+            }
+
+            <CalledItem
+              isNew
+              placeholder="Ex:Luva-01"
+              value={newUsedMaterial}
+              onChange={e => setNewUsedMaterial(e.target.value)}
+              onClick={handleAddMaterial} />
+
+          </div>
+
+        </CalledItemContainer>    
+
+
 
         <Grid >
           <Input

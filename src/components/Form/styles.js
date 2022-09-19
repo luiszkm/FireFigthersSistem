@@ -66,3 +66,36 @@ export const Grid = styled.div`
   }
 
 `
+export const CalledItemContainer = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 1rem;
+
+ >div{
+  width: 100%;
+  gap: 1rem;
+  border-radius: 8px;
+  border: 1px solid ${({ theme }) => theme.COLORS.WHITE};
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap ;
+
+
+  @media (min-width:768px) {
+    flex-direction: row;
+  }
+}
+>label{
+    font-family: 'Roboto' ,sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.6rem;
+    line-height: 1.6rem;
+    color: ${({ theme }) => theme.COLORS.TEXT_COLOR};
+  }
+ 
+`
