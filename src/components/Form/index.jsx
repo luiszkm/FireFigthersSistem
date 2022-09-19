@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { Input } from '../Input';
+import { Select } from '../Select';
 import { Textarea } from '../TextArea';
 import { Button } from "../Button"
 import { api } from "../../services/api"
 import { Form, Container, DivRow, Div, Grid } from "./styles"
 import { useAuth } from '../../hooks/auth';
+import { CalledItem } from '../CalledItem';
 
 export function FormPage() {
-  const { user} = useAuth()
+  const { user } = useAuth()
   const [userName, setUserName] = useState(user.name);
 
   //victim Datas
@@ -54,7 +56,7 @@ export function FormPage() {
 
     try {
       await api.post('/called',
-        { 
+        {
           userName,
           type, victimName, age, sexo, phone,
           rg, escortPhone, escortName,
@@ -123,13 +125,7 @@ export function FormPage() {
 
         <DivRow>
 
-          <select onChange={e => setType(e.target.value)} >
-            <option value=""></option>
-            <option value="lojista">Lojista </option>
-            <option value="colaborador"> Colaborador </option>
-            <option value="cliente"> Cliente</option>
-            <option value="terceirizado"> Terceirizado</option>
-          </select>
+          <Select/>
 
           <Input type="number" placeholder="Idade"
             onChange={e => setAge(e.target.value)} />
@@ -186,6 +182,8 @@ export function FormPage() {
             onChange={e => setVictimDestiny(e.target.value)}
           />
         </Div>
+
+        <CalledItem />
 
         <Grid >
           <Input

@@ -43,6 +43,7 @@ export const DivRow = styled.div`
     grid-template-columns: repeat(3, 1fr);
 
   }
+ 
 `
 export const Grid = styled.div`
   width: 100%;

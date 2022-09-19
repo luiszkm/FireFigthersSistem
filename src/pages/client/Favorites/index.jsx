@@ -10,22 +10,35 @@ import { SearchBar } from "../../../components/SearchBar";
 
 
 export function Favorites() {
-  const [datas, setDatas] = useState([])
+  const [datas, setDatas] = useState([]);
+  const [search, setSearch] = useState('');
   
-  
+
+
   useEffect(()=>{
-    async function handleFavorites(){
+    async function fetchCalled(){
       const response = await api.get("/users/called");
       setDatas(response.data.called)
     }
-    handleFavorites()
+    fetchCalled()
 
 },[])
+
+useEffect(() => {
+  async function  fetchCalledFiltered() {
+    const response = await api.get(`/called?victim_name=${search}`)
+    console.log(response.data);
+    setDatas(response.data)
+  }
+  fetchCalledFiltered()
+},
+[search])
   return (
     <Container>
       <Header />
       <Section>
-        <SearchBar />
+        <SearchBar
+        onChange ={e=> setSearch(e.target.value)} />
         <Table data={datas} />
       </Section>
       <Footer />

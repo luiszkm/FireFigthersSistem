@@ -1,7 +1,7 @@
 import {Container} from './styles'
 import {AiOutlineClose, AiOutlinePlus} from 'react-icons/ai'
 
-export function IngredientItem ({isNew = false ,value, onClick, ...rest}) {
+export function CalledItem ({isNew = false ,value, onClick, ...rest}) {
 
 return (
   <Container isNew= {isNew}>

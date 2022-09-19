@@ -1,13 +1,10 @@
 import { Footer } from "../../../components/Footer"
 import { Header } from "../../../components/Header"
-import { Section } from "../../../components/Section"
 import { Card } from "../../../components/Card"
-import { Carousel } from "../../../components/Carousel"
 
 import  avatarPlaceholder from "../../../assets/avatar_placeholder.svg";
 
 import { Container, Main } from "./styles"
-import { Table } from "../../../components/Table"
 import { api } from "../../../services/api"
 import { useAuth } from "../../../hooks/auth"
 import { useEffect } from "react"
@@ -34,11 +31,8 @@ export function Adm() {
         {
           data.map(data=>(
             <Card data={data} />
-
           ))
         }
-
-       
       </Main>
       <Footer />
     </Container>

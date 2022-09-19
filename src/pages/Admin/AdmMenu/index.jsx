@@ -30,10 +30,7 @@ export function AdmMenu() {
       <Header />
       <Section title="Todos os Chamados">
       <Table data={datas} />
-
       </Section>
-
-
       <Footer />
     </Container>
   )
