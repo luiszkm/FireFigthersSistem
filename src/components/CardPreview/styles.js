@@ -5,7 +5,7 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100%;
-  max-width: 900px;
+  max-width: 1200px;
   border: 1px solid white;
 
   >h4{
@@ -20,7 +20,7 @@ export const Container = styled.div`
 
      @media (min-width:768px) {
       flex-direction: row;
-
+      font-size: 2rem;
      }
      >section{
   padding: 1rem;

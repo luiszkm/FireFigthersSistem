@@ -7,7 +7,8 @@ export const Container = styled.div`
     align-items: center;
     justify-content: center;
     gap: 2rem;
-    padding-top: 12rem;
+    min-height: 100vh;
+    padding-top: 1rem;
     >  nav ul{
       display: flex;
       align-items: center;

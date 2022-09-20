@@ -32,7 +32,6 @@ const navigate = useNavigate()
       alt="imagem do colaborador" />
       <h3>{data.name}</h3>
       <p>{data.email}</p>
-      <p>total chamados : 55</p>
 
     </Container>
   )

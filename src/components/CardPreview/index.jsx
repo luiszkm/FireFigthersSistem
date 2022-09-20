@@ -4,20 +4,13 @@ import { Button } from "../Button";
 import { Section } from "../Section";
 import { useState } from "react";
 import { useEffect } from "react";
+import React from "react";
+import { api } from "../../services/api";
 
 
-export function CardPreview({ data = {} }) {
-  const [traumas, setTraumas] = useState( data.traumas)
 
-  var a = traumas.forEach(a=>{
-    console.log(a);
-  })
-  
-  useEffect(() => {
-    setTraumas(data.traumas)
 
-   
-  }, [])
+export function CardPreview({ data }) {
 
   return (
     <Container>
@@ -69,18 +62,32 @@ export function CardPreview({ data = {} }) {
             <span>Medicamentos usado pela vitima: {data.medicines}</span>
             <DivRow>
               <strong>Traumas:</strong>
-                  {
-                  
-                  }
+              {data.traumas &&
+                data.traumas.map(trauma => (
+                  <span key={trauma.id}>- {trauma.traumas_name}</span>
+                ))
+              }
             </DivRow>
+
             <DivRow>
 
               <strong>Clínico:</strong>
-              <span>Convulsão</span>
+              {
+                data.clinical &&
+                data.clinical.map(clinic => (
+                  <span key={clinic.id}>- {clinic.clinical_name}</span>
+
+                ))
+              }
             </DivRow>
             <DivRow>
               <strong>Lesões:</strong>
-              <span>Queimadura- Face</span>
+              {
+                data.wound &&
+                data.wound.map(wound => (
+                  <span key={wound.id}>- {wound.wound_name}</span>
+                ))
+              }
             </DivRow>
             <DivRow>
               <strong>1°PA:
@@ -104,6 +111,7 @@ export function CardPreview({ data = {} }) {
 
         <Section title="Procedimentos"
           back={false}>
+
           <Div>
             <strong>Temperatura:
               <span>{data.temperature}</span>
@@ -120,12 +128,23 @@ export function CardPreview({ data = {} }) {
             </DivRow>
 
             <DivRow>
-              <strong>Procedimentos:</strong>
-              <span>Cadeira de Rodas</span>
+              <strong>Procedimentos Efetuados:</strong>
+              {
+                data.procedures &&
+                data.procedures.map(procedure => (
+                  <span key={procedure.id}>- {procedure.procedures_name}</span>
+                ))
+              }
+
             </DivRow>
             <DivRow>
               <strong>Material Usado:</strong>
-              <span>Luva (5)</span>
+              {
+                data.materials &&
+                data.materials.map(material => (
+                  <span key={material.id}>{material.material_name}</span>
+                ))
+              }
             </DivRow>
             <DivRow>
               <strong>Destino :</strong>

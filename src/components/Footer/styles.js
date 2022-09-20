@@ -7,7 +7,7 @@ export const Container = styled.footer`
   align-items: center;
   justify-content: space-between;
   background: ${({ theme }) => theme.COLORS.SECONDARY_BG};
-
+  padding: 2rem;
   >small{
     color: ${({ theme }) => theme.COLORS.WHITE};
     display: flex;
