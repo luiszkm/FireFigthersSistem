@@ -2,19 +2,30 @@ import { Container, Div, DivRow } from "./styles";
 import { AiOutlineHeart, AiOutlinePlus, AiOutlineLine } from "react-icons/ai";
 import { Button } from "../Button";
 import { Section } from "../Section";
+import { useState } from "react";
+import { useEffect } from "react";
 
 
 export function CardPreview({ data = {} }) {
+  const [traumas, setTraumas] = useState( data.traumas)
 
+  var a = traumas.forEach(a=>{
+    console.log(a);
+  })
+  
+  useEffect(() => {
+    setTraumas(data.traumas)
 
-
+   
+  }, [])
 
   return (
     <Container>
       <h4>Responsável: {data.user_name}  <strong>data: {data.created_at}</strong></h4>
 
       <div>
-        <Section title="Dados da Vitima">
+        <Section title="Dados da Vitima"
+          back={false}>
           <Div>
             <span> <strong>tipo: </strong>
               {data.type}
@@ -46,7 +57,9 @@ export function CardPreview({ data = {} }) {
           </Div>
 
         </Section>
-        <Section title="Controle de Atendimento">
+
+        <Section title="Controle de Atendimento"
+          back={false}>
           <Div>
             <DivRow>
               <span>Sala de atendimento: 15:20</span>
@@ -56,7 +69,9 @@ export function CardPreview({ data = {} }) {
             <span>Medicamentos usado pela vitima: {data.medicines}</span>
             <DivRow>
               <strong>Traumas:</strong>
-              <span>atropelamento</span>
+                  {
+                  
+                  }
             </DivRow>
             <DivRow>
 
@@ -76,10 +91,10 @@ export function CardPreview({ data = {} }) {
               </strong>
             </DivRow>
             <DivRow>
-              <strong>2°PA: 
+              <strong>2°PA:
                 <span>{data.pa1 || ' -/-'}</span>
               </strong>
-              <strong>Hora:  
+              <strong>Hora:
                 <span>{data.timePa2 || " -/-"}</span>
               </strong>
             </DivRow>
@@ -87,7 +102,8 @@ export function CardPreview({ data = {} }) {
           </Div>
         </Section>
 
-        <Section title="Procedimentos">
+        <Section title="Procedimentos"
+          back={false}>
           <Div>
             <strong>Temperatura:
               <span>{data.temperature}</span>
@@ -122,6 +138,7 @@ export function CardPreview({ data = {} }) {
 
           </Div>
         </Section>
+
       </div>
 
 
