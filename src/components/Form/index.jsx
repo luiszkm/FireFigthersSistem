@@ -40,7 +40,10 @@ export function FormPage() {
   const [spo2, setSpo2] = useState('');
   const [victimDestiny, setVictimDestiny] = useState('');
   const [descriptions, setDescriptions] = useState('');
-
+  const [transmission, setTransmission] = useState('');
+  const [coming, setComing] = useState('');
+  const [exit, setExit] = useState('');
+  const [release, setRelease] = useState('');
 
   const [newTrauma, setNewTrauma] = useState('');
   const [traumas, setTraumas] = useState([]);
@@ -111,7 +114,9 @@ export function FormPage() {
           pa1, timePa1, pa2, timePa2,
           temperature, pulse, spo2,
           victimDestiny, descriptions,
+          coming, exit, release,
           street, medicines,
+          transmission,
           number,
           district,
           city,
@@ -353,7 +358,7 @@ export function FormPage() {
 
           </div>
 
-        </CalledItemContainer>    
+        </CalledItemContainer>
 
 
 
@@ -361,21 +366,26 @@ export function FormPage() {
           <Input
             id="transmission"
             name="Transmissão"
-            type="datetime-local"
-            placeholder="Transmissão" />
-          <Input name="Chegada"
-            type="datetime-local"
-            placeholder="Chegada " />
+            type="time"
+            placeholder="Transmissão"
+            onChange={e => setTransmission(e.target.value)} />
+          <Input id="coming"
+            name="Chegada"
+            type="time"
+            placeholder="Chegada "
+            onChange={e => setComing(e.target.value)} />
           <Input
             id='exit'
             name="Saida"
-            type="datetime-local"
-            placeholder="Saida" />
+            type="time"
+            placeholder="Saida"
+            onChange={e => setExit(e.target.value)} />
           <Input
             id='release'
             name="Liberação"
-            type="datetime-local"
-            placeholder="Liberação" />
+            type="time"
+            placeholder="Liberação"
+            onChange={e => setRelease(e.target.value)} />
         </Grid>
 
         <Grid>

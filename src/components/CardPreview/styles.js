@@ -47,6 +47,7 @@ gap: 1rem;
 align-items: center;
 >span{
   border-bottom: 1px solid white;
+  font-weight: 400;
 }
 
 `

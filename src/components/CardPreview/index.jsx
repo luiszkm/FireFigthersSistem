@@ -126,8 +126,24 @@ export function CardPreview({ data }) {
                 <span>{data.spo2}</span>
               </strong>
             </DivRow>
-
             <DivRow>
+              <strong>Transmissão:
+                <span>{data.transmission || ' -/-'}</span>
+              </strong>
+              <strong>Chegada:
+                <span>{data.coming || " -/-"}</span>
+              </strong>
+            </DivRow>
+            
+          <DivRow>
+              <strong>Saída:
+                <span>{data.exit || ' -/-'}</span>
+              </strong>
+              <strong>Liberação:
+                <span>{data.release || " -/-"}</span>
+              </strong>
+            </DivRow>
+            <Div>
               <strong>Procedimentos Efetuados:</strong>
               {
                 data.procedures &&
@@ -136,7 +152,7 @@ export function CardPreview({ data }) {
                 ))
               }
 
-            </DivRow>
+            </Div>
             <DivRow>
               <strong>Material Usado:</strong>
               {
@@ -156,6 +172,8 @@ export function CardPreview({ data }) {
             </Div>
 
           </Div>
+
+        
         </Section>
 
       </div>
