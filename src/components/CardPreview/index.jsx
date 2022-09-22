@@ -54,9 +54,22 @@ export function CardPreview({ data }) {
         <Section title="Controle de Atendimento"
           back={false}>
           <Div>
-            <DivRow>
-              <span>Sala de atendimento: 15:20</span>
-              <span>liberação: 15:30</span>
+          <DivRow>
+              <strong>Transmissão: 
+                <span>{data.transmission || ' -/-'}</span>
+              </strong>
+              <strong>Chegada: 
+                <span>{data.coming || " -/-"}</span>
+              </strong>
+            </DivRow>
+            
+          <DivRow>
+              <strong>Saída: 
+                <span>{data.exit || ' -/-'}</span>
+              </strong>
+              <strong>Liberação: 
+                <span>{data.release || " -/-"}</span>
+              </strong>
             </DivRow>
 
             <span>Medicamentos usado pela vitima: {data.medicines}</span>
@@ -126,23 +139,7 @@ export function CardPreview({ data }) {
                 <span>{data.spo2}</span>
               </strong>
             </DivRow>
-            <DivRow>
-              <strong>Transmissão:
-                <span>{data.transmission || ' -/-'}</span>
-              </strong>
-              <strong>Chegada:
-                <span>{data.coming || " -/-"}</span>
-              </strong>
-            </DivRow>
-            
-          <DivRow>
-              <strong>Saída:
-                <span>{data.exit || ' -/-'}</span>
-              </strong>
-              <strong>Liberação:
-                <span>{data.release || " -/-"}</span>
-              </strong>
-            </DivRow>
+        
             <Div>
               <strong>Procedimentos Efetuados:</strong>
               {
