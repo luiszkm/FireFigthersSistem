@@ -24,7 +24,6 @@ export function FormPage() {
   const [medicines, setMedicines] = useState('');
 
   // victim Address
-  const [address, setAddress] = useState({});
   const [street, setStreet] = useState('');
   const [number, setNumber] = useState('');
   const [district, setDistrict] = useState('');
@@ -135,36 +134,6 @@ export function FormPage() {
     }
   }
 
-  let taa = {
-    "type": type,
-    "victimName": victimName,
-    "age": age,
-    "phone": phone,
-    "rg": rg,
-    "sexo": sexo,
-    "escortName": escortName,
-    "escortPhone": escortPhone,
-    "medicines": medicines,
-    "traumas": traumas,
-    "clinical": clinical,
-    "wound": wounds,
-    "street": street,
-    "number": number,
-    "district": district,
-    "city": city,
-    "pa1": pa1,
-    "timePa1": timePa1,
-    "pa2": pa2,
-    "timePa2": timePa2,
-    "temperature": temperature,
-    "pulse": pulse,
-    "spo2": spo2,
-    "procedures": procedures,
-    "usedMaterial": usedMaterials,
-    "victimDestiny": victimDestiny,
-    "descriptions": descriptions
-
-  }
 
   return (
     <Container>
