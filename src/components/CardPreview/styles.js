@@ -6,8 +6,15 @@ export const Container = styled.div`
   align-items: center;
   width: 100%;
   max-width: 1200px;
+  padding-top: 3rem;
   border: 1px solid white;
-
+  position: relative;
+  >svg{
+    position:absolute;
+    top: 1rem;
+    right: 1rem;
+    cursor: pointer;
+  }
   >h4{
     display: flex;
     flex-direction: column;
