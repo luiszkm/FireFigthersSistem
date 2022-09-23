@@ -66,7 +66,7 @@ export function FormPage() {
   function handleDeleteTrauma(itemDeleted) {
     setTraumas(prevState => prevState.filter(trauma => trauma !== itemDeleted))
   }
-  ///////////////////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////////////
   function handleAddClinical() {
     setClinical(prevState => [...prevState, newClinical])
     setNewClinical("")
@@ -103,7 +103,11 @@ export function FormPage() {
 
   async function handleNewCalled(e) {
     e.preventDefault()
-
+    if(!victimName || !phone || !rg){
+      alert("Preencha todos os campos!")
+      return
+      
+    }
     try {
       await api.post('/called',
         {

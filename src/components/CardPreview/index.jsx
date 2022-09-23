@@ -7,13 +7,29 @@ import { useEffect } from "react";
 import React from "react";
 import { api } from "../../services/api";
 
-
+import { AiOutlineDelete } from "react-icons/ai"
+import { useAuth } from "../../hooks/auth";
 
 
 export function CardPreview({ data }) {
+  const { admin } = useAuth()
+
+ async function handleDeleteCalled(id){
+
+    try{
+     await api.delete(`/called/${id}`)
+      alert('Chamado deletado com sucesso!')
+    }catch (error) {
+      alert("Não foi possível deletar!")
+    }
+  }
+
+
 
   return (
     <Container>
+      {admin ? <AiOutlineDelete size={30} color="red" 
+      onClick={()=> handleDeleteCalled(data.id)}/> : ''}
       <h4>Responsável: {data.user_name}  <strong>data: {data.created_at}</strong></h4>
 
       <div>
@@ -54,20 +70,20 @@ export function CardPreview({ data }) {
         <Section title="Controle de Atendimento"
           back={false}>
           <Div>
-          <DivRow>
-              <strong>Transmissão: 
+            <DivRow>
+              <strong>Transmissão:
                 <span>{data.transmission || ' -/-'}</span>
               </strong>
-              <strong>Chegada: 
+              <strong>Chegada:
                 <span>{data.coming || " -/-"}</span>
               </strong>
             </DivRow>
-            
-          <DivRow>
-              <strong>Saída: 
+
+            <DivRow>
+              <strong>Saída:
                 <span>{data.exit || ' -/-'}</span>
               </strong>
-              <strong>Liberação: 
+              <strong>Liberação:
                 <span>{data.release || " -/-"}</span>
               </strong>
             </DivRow>
@@ -139,7 +155,7 @@ export function CardPreview({ data }) {
                 <span>{data.spo2}</span>
               </strong>
             </DivRow>
-        
+
             <Div>
               <strong>Procedimentos Efetuados:</strong>
               {
@@ -170,7 +186,7 @@ export function CardPreview({ data }) {
 
           </Div>
 
-        
+
         </Section>
 
       </div>
