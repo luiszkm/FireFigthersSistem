@@ -9,27 +9,34 @@ import { api } from "../../services/api";
 
 import { AiOutlineDelete } from "react-icons/ai"
 import { useAuth } from "../../hooks/auth";
+import { useNavigate } from "react-router-dom";
 
 
 export function CardPreview({ data }) {
   const { admin } = useAuth()
 
- async function handleDeleteCalled(id){
+  const navigate = useNavigate()
 
-    try{
-     await api.delete(`/called/${id}`)
-      alert('Chamado deletado com sucesso!')
-    }catch (error) {
-      alert("Não foi possível deletar!")
+  async function handleDeleteCalled(id) {
+    const isOk = window.confirm('Deseja realmente deletar este chamado?')
+    if (isOk) {
+      try {
+        await api.delete(`/called/${id}`)
+        alert('Chamado deletado com sucesso!')
+        navigate('/administrator')
+      } catch (error) {
+        alert("Não foi possível deletar!")
+      }
     }
+
   }
 
 
 
   return (
     <Container>
-      {admin ? <AiOutlineDelete size={30} color="red" 
-      onClick={()=> handleDeleteCalled(data.id)}/> : ''}
+      {admin ? <AiOutlineDelete size={30} color="red"
+        onClick={() => handleDeleteCalled(data.id)} /> : ''}
       <h4>Responsável: {data.user_name}  <strong>data: {data.created_at}</strong></h4>
 
       <div>
@@ -185,13 +192,8 @@ export function CardPreview({ data }) {
             </Div>
 
           </Div>
-
-
         </Section>
-
       </div>
-
-
     </Container>
   )
 }
